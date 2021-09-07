@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState,useEffect} from 'react'
 import { StatesData } from "../data/StatesData";
 import ConfirmationMessage from "./ConfirmationMessage";
 import Dropdown from './Dropdown';
@@ -6,9 +6,22 @@ import {Departments} from '../data/Departement';
 import Picker from './Picker';
 
 
-function Form({setOpenElts,openedElts}) {
+function Form() {
   
+    const initialState = {
+        birth: false,
+        start: false,
+        state: false,
+        department: false,
+      };
+    const [openedElts, setOpenElts] = useState(initialState);
+    
+    const closeElts= () => {
 
+        if(openedElts.state || openedElts.birth || openedElts.start || openedElts.department){
+            setOpenElts(initialState)
+        }
+    }
     const [created, setCreated]= useState(false)
     const initialDataState= {
         firstName:'',
@@ -50,6 +63,10 @@ function Form({setOpenElts,openedElts}) {
         });
     };
 
+    useEffect(() => {
+        closeElts()
+        
+    }, [data])
     return (
         <React.Fragment >
             <form onSubmit={handleSubmit} id="create-employee">
