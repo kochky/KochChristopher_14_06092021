@@ -1,4 +1,4 @@
-
+import '../css/ConfirmationMessage.css';
 
 function ConfirmationMessage({setCreated}) {
 

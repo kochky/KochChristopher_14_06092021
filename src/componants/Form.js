@@ -6,6 +6,9 @@ import {Departments} from '../data/Departement';
 import Picker from './Picker';
 
 
+import '../css/Form.css';
+
+
 function Form() {
   
     const initialState = {
