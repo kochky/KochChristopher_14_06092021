@@ -19,17 +19,11 @@ function Form() {
       };
     const [openedElts, setOpenElts] = useState(initialState);
     
-    const closeElts= () => {
-
-        if(openedElts.state || openedElts.birth || openedElts.start || openedElts.department){
-            setOpenElts(initialState)
-        }
-    }
     const [created, setCreated]= useState(false)
     const initialDataState= {
         firstName:'',
         lastName:'',
-        birth:'01/01/1990',
+        birth:'dd/mm/yyyy',
         start: new Date().toLocaleDateString(),
         department:Departments[0],
         street:'',
@@ -52,11 +46,16 @@ function Form() {
         });
       };
     
-    const handleElementsOpening = (elt) => {
-        setOpenElts({
-            ...openedElts,
-            [elt]: !openedElts[elt],
-        });
+    const handleElementsOpening = (elt) => {  
+        if(openedElts.start ||openedElts.birth || openedElts.department || openedElts.state) {
+            setOpenElts(initialState)  
+        }  else {
+            setOpenElts({
+                ...openedElts,
+                [elt]: !openedElts[elt],
+            
+            }); 
+        }
     };
     
     const handleCustomInputChange = (name, value) => {
@@ -67,21 +66,24 @@ function Form() {
     };
 
     useEffect(() => {
-        closeElts()
+       
+        
+        setOpenElts(initialState)
         
     }, [data])
     return (
         <React.Fragment >
             <form onSubmit={handleSubmit} id="create-employee">
                 <label htmlFor="first-name">First Name</label>
-                <input required pattern="[a-z].{2,}" title="2 characters minimum" type="text" id="first-name" name='firstName'   value={data.firstName} onChange={handleInputChange}/>
+                <input required pattern="[a-z].{1,}" title="2 characters minimum" type="text" id="first-name" name='firstName'   value={data.firstName} onChange={handleInputChange}/>
 
                 <label htmlFor="last-name">Last Name</label>
-                <input required type="text" id="last-name" name='lastName' pattern="[a-z].{2,}" title="2 characters minimum" value={data.lastName} onChange={handleInputChange} />
+                <input required type="text" id="last-name" name='lastName' pattern="[a-z].{1,}" title="2 characters minimum" value={data.lastName} onChange={handleInputChange} />
 
                 <Picker 
                 text="Date of Birth"
                 date={data.birth} 
+                handleInputChange={handleInputChange}
                 handleCustomInputChange={handleCustomInputChange}
                 label="date-of-birth"
                 name='birth'
@@ -92,6 +94,7 @@ function Form() {
                 <Picker 
                 text="Start Date"
                 date={data.start} 
+                handleInputChange={handleInputChange}
                 handleCustomInputChange={handleCustomInputChange}
                 label="start-date"
                 name='start'
@@ -103,10 +106,10 @@ function Form() {
                     <legend>Address</legend>
 
                     <label htmlFor="street">Street</label>
-                    <input required  id="street" type="text" name='street' pattern="[a-z].{2,}" title="2 characters minimum" value={data.street} onChange={handleInputChange}/>
+                    <input required  id="street" type="text" name='street' pattern="[a-z].{1,}" title="2 characters minimum" value={data.street} onChange={handleInputChange}/>
 
                     <label htmlFor="city">City</label>
-                    <input required   id="city" type="text"  name='city' pattern="[a-z].{2,}" title="2 characters minimum" value={data.city} onChange={handleInputChange}/>
+                    <input required   id="city" type="text"  name='city' pattern="[a-z].{1,}" title="2 characters minimum" value={data.city} onChange={handleInputChange}/>
                     
                     <Dropdown
                     selectValue={data.state}
@@ -130,7 +133,7 @@ function Form() {
                     isOpen={openedElts.department}
                     handleOpen={handleElementsOpening}
                      />
-                <button>Save</button>
+                <button className="save-button">Save</button>
             </form>
             {created=== true ? <ConfirmationMessage setCreated={setCreated}/>:''}
         </React.Fragment>

@@ -1,9 +1,83 @@
 label {
     display: block;
-    margin-top: 1rem;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color:black;
   }
   
-  .address {
+.address {
     margin-top: 10px;
   }
+
+form {
+    width:40%;
+    min-width: 375px;
+
+}
+input {
+    width:100%;
+    border:1px solid black;
+    border-radius:5px;
+}
+
+.address {
+    color:lightcoral;
+    margin:30px 0;
+    border-radius: 5px;
+    border: 2px solid lightcoral;
+}
+
+.calendar-container {
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    position:absolute;
+    z-index:99;
+    background-color: rgba(0,0,0,0.5);
+    
+}
+
+
+
+.date-of-birth {
+    margin:0 auto;
+    margin-top:42vh;
+    width:fit-content
+   
+}
+
+.start-date {
+    margin:0 auto;
+    margin-top:48vh;
+    width:fit-content
+}
+
+.react-calendar {
+  
+    border-radius: 5%;
+    box-shadow: 2px 2px lightslategrey;
+    min-width: 375px;
+
+    
+}
+
+.save-button {
+    border-radius: 5px;
+    background-color: lightcoral;
+    color:white;
+    width:100%;
+    padding:5px 10px;
+    margin-top:30px;
+    border:1px solid lightcoral
+}
+
+label{
+    display:flex;
+    justify-content: space-between;
+    padding-right:10px;
+    
+
+
+}

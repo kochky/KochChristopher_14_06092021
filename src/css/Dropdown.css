@@ -2,10 +2,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: lightcoral;
-    border: 1px solid lightcoral;
+    color: black;
+    border: 1px solid black;
     border-radius: 5px;
     padding: 5px 10px;
+    background-color: white;
+    position:relative;
   }
   
   .dropdown:hover {
@@ -40,12 +42,13 @@
     }
   .dropdown-options.active {
         display: block;
+        position:absolute;
       }
     
   
   .dropdown-option {
-      padding: 5px;
-      color: lightcoral;
+      padding: 5px 10px;
+      color: black;
     }
   .dropdown-option:hover {
         cursor: pointer;
