@@ -1,27 +1,25 @@
 
-.title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
 header {
+    padding:0 15%;
     background-color: lightcoral;
     display:flex;
-    flex-direction: column;
-    position:relative;
+    align-items: baseline;
+    justify-content: space-between;
     border-radius: 0 0 15px 15px;
 }
 
+header div {
+    display:flex;
+    margin-left:30px;
+}
+
 .link {
-    position:absolute;
-    right:28%;
-    bottom:5px;
+   font-size: 20px;
 }
 
 .link  a{
     color:white;   
-}
+} 
 
 .link a:hover {
     text-decoration: underline;

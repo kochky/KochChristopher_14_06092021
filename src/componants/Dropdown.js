@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import '../css/Dropdown.css';
 
-
-
-
 const Dropdown = ({
   selectValue,
   handleSelectChange,
@@ -22,19 +19,12 @@ const Dropdown = ({
         {selectLabel}
       </label>
       <span
-        className="dropdown"
+        className={isOpen ?"dropdown bottom-border": "dropdown"}
         id={`${selectName}-btn`}
         onClick={() => handleOpen(selectName)}
-        tabIndex="0"
-        role="combobox"
-        aria-expanded={isOpen}
-        aria-controls={`${selectName}-menu`}
-        aria-activedescendant={activeDescendant}
-        aria-labelledby={activeDescendant}
-        aria-haspopup={true}
       >
         <span>{selectValue.text}</span>
-        <img src="./images/down-arrow.png" alt="" className="dropdown-btn" />
+        {isOpen ? <i class="fas fa-angle-down fa-lg"></i> :<i class="fas fa-angle-up fa-lg"></i> } 
       </span>
       <div className={isOpen ? "dropdown-options active" : "dropdown-options"}>
         <ul className="dropdown-list" id={`${selectName}-menu`}>

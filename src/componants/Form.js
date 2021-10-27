@@ -32,9 +32,11 @@ function Form() {
         zipCode:''
     }
     const [data,setData]= useState(initialDataState)
+    const employees = JSON.parse(localStorage.getItem('employees')) || [];
+    employees.push(data);
     const handleSubmit = async e => {
         e.preventDefault();
-        localStorage.setItem('employees', JSON.stringify(data));
+        localStorage.setItem('employees', JSON.stringify(employees));
         setCreated(true)
         setData(initialDataState)  
     }
@@ -66,13 +68,12 @@ function Form() {
     };
 
     useEffect(() => {
-       
-        
-        setOpenElts(initialState)
-        
+        setOpenElts(initialState) 
     }, [data])
+
     return (
         <React.Fragment >
+            
             <form onSubmit={handleSubmit} id="create-employee">
                 <label htmlFor="first-name">First Name</label>
                 <input required pattern="[a-z].{1,}" title="2 characters minimum" type="text" id="first-name" name='firstName'   value={data.firstName} onChange={handleInputChange}/>
@@ -119,11 +120,11 @@ function Form() {
                     selectName="state"
                     isOpen={openedElts.state}
                     handleOpen={handleElementsOpening} />
-  
-                    <label htmlFor="zip-code">Zip Code</label>
-                    <input required id="zip-code" type="number" name='zipCode' value={data.zipCode} onChange={handleInputChange} />
-                </fieldset>
 
+                    <label htmlFor="zip-code">Zip Code</label>
+                    <input required id="zip-code" type="text" name='zipCode'pattern="[0-9].{1,}" title="Must be a number" value={data.zipCode} onChange={handleInputChange} />
+                </fieldset>
+                
                     <Dropdown
                     selectValue={data.department}
                     handleSelectChange={handleCustomInputChange}
@@ -138,7 +139,6 @@ function Form() {
             {created=== true ? <ConfirmationMessage setCreated={setCreated}/>:''}
         </React.Fragment>
     )
-
 }
 
 export default Form
