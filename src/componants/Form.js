@@ -31,9 +31,11 @@ function Form() {
         state:StatesData[0],
         zipCode:''
     }
+
     const [data,setData]= useState(initialDataState)
     const employees = JSON.parse(localStorage.getItem('employees')) || [];
     employees.push(data);
+
     const handleSubmit = async e => {
         e.preventDefault();
         localStorage.setItem('employees', JSON.stringify(employees));
@@ -48,7 +50,8 @@ function Form() {
         });
       };
     
-    const handleElementsOpening = (elt) => {  
+    const handleElementsOpening = (elt) => { 
+ 
         if(openedElts.start ||openedElts.birth || openedElts.department || openedElts.state) {
             setOpenElts(initialState)  
         }  else {

@@ -24,7 +24,7 @@ const Dropdown = ({
         onClick={() => handleOpen(selectName)}
       >
         <span>{selectValue.text}</span>
-        {isOpen ? <i class="fas fa-angle-down fa-lg"></i> :<i class="fas fa-angle-up fa-lg"></i> } 
+        {isOpen ? <i className="fas fa-angle-down fa-lg"></i> :<i className="fas fa-angle-up fa-lg"></i> } 
       </span>
       <div className={isOpen ? "dropdown-options active" : "dropdown-options"}>
         <ul className="dropdown-list" id={`${selectName}-menu`}>

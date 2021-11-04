@@ -1,15 +1,20 @@
 label {
-    display: block;
     margin-top: 15px;
     margin-bottom: 5px;
     font-weight: bold;
     color:black;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right:10px;
+    width:100%;
   }
   
 
 form {
     width:40%;
     min-width: 375px;
+    position:relative;
 
 }
 input {
@@ -19,53 +24,46 @@ input {
 }
 
 .address {
-    color:lightcoral;
     margin:30px 0;
     border-radius: 5px;
-    border: 2px solid lightcoral;
+    border: 2px solid #00353F;
+    color:#00353F
 }
 
-.calendar-container {
+
+.date-of-birth, .start-date  {
+    margin:0 auto;
     width:100%;
-    height:100%;
-    left:0;
-    top:0;
     position:absolute;
     z-index:99;
-    background-color: rgba(0,0,0,0.5);
-    
+    animation: apparition 400ms;
+    animation-fill-mode:forwards;
+    transform-origin: 100% 0%;  
 }
 
-.date-of-birth {
-    margin:0 auto;
-    margin-top:42vh;
-    width:fit-content
-   
-}
-.start-date {
-    margin:0 auto;
-    margin-top:48vh;
-    width:fit-content
-}
 
 .react-calendar {
-    border-radius: 5%;
+    border-radius: 5px;
     box-shadow: 2px 2px lightslategrey;
     min-width: 375px;
+    width:100%;
 }
+
 
 .save-button {
     border-radius: 5px;
-    background-color: lightcoral;
-    color:white;
+    background-color: #00353F;
     width:100%;
     padding:5px 10px;
     margin-top:30px;
-    border:1px solid lightcoral
+    border:1px solid #00353F;
+    font-size: 16px;
+    font-weight: bold;
+    color:white
+
 }
 
-label{
-    display:flex;
-    justify-content: space-between;
-    padding-right:10px;
+@keyframes apparition {
+    0% {opacity:0;transform: scale(0);transform:translateY(-21px) }
+    100% {opacity:1;transform: scale(1.0);transform:translateY(0px)}
 }

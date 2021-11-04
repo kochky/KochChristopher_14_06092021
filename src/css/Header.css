@@ -1,7 +1,8 @@
 
 header {
     padding:0 15%;
-    background-color: lightcoral;
+    background-color: #00353F;
+    color:white;
     display:flex;
     align-items: baseline;
     justify-content: space-between;
@@ -14,12 +15,11 @@ header div {
 }
 
 .link {
-   font-size: 20px;
+   font-size: 20px; 
 }
 
 .link  a{
-    color:white;   
-} 
+    color:white;} 
 
 .link a:hover {
     text-decoration: underline;

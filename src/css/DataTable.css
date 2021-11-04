@@ -1,0 +1,40 @@
+.employee-list-container{
+    padding:0 100px;
+ 
+  }
+
+  .dataTable-thead , .dataTable-footer {
+    background-color: #00353F;
+  }
+
+.dataTable-th, .dataTable-td{
+    width:150px;
+    max-width:150px;
+   
+}
+
+table {
+  box-shadow: 5px 45px 20px lightgrey;
+}
+
+.dataTables-top label {
+  width: min-content;
+}
+
+.datatable-search-input {
+  width:200px;
+}
+
+.datatable-select {
+  margin-right:5px;
+}
+
+.page-index:hover {
+  font-weight:400 !important;
+  text-shadow: 1px 1px 2px gray;
+}
+
+.dataTable-th{
+  text-align: unset !important;
+
+}
