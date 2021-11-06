@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../css/Dropdown.css';
+import arrowIcon from "../images/angle-down-solid.svg"
 
 const Dropdown = ({
   selectValue,
@@ -13,6 +14,7 @@ const Dropdown = ({
   const [activeDescendant, setActiveDescendant] = useState(
     `option-${selectValue.text}`
   );
+  const [eltText,setEltText]=useState(selectValue.text)
   return (
     <div className="dropdown-wrapper">
       <label htmlFor={`${selectName}-btn`} className="dropdown-label">
@@ -23,8 +25,8 @@ const Dropdown = ({
         id={`${selectName}-btn`}
         onClick={() => handleOpen(selectName)}
       >
-        <span>{selectValue.text}</span>
-        {isOpen ? <i className="fas fa-angle-down fa-lg"></i> :<i className="fas fa-angle-up fa-lg"></i> } 
+        <span>{eltText}</span>
+        {isOpen ? <img  alt={"Arrow icon"} src={arrowIcon} className="arrow-icon"></img> :<img alt={"Arrow icon"} src={arrowIcon}  className="arrow-icon rotate"></img> } 
       </span>
       <div className={isOpen ? "dropdown-options active" : "dropdown-options"}>
         <ul className="dropdown-list" id={`${selectName}-menu`}>
@@ -33,7 +35,8 @@ const Dropdown = ({
               key={elt.value}
               value={elt}
               onClick={() => {
-                handleSelectChange(selectName, elt);
+                setEltText(elt.text)
+                handleSelectChange(selectName, elt.value);
                 setActiveDescendant(`option-${elt.text}`);
                 handleOpen(selectName);
               }}

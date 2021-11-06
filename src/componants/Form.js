@@ -9,11 +9,11 @@ import Picker from './Picker';
 import '../css/Form.css';
 
 
-function Form() {
+function Form({handleSubmit}) {
   
     const initialState = {
-        birth: false,
-        start: false,
+        dateOfBirth: false,
+        startDate: false,
         state: false,
         department: false,
       };
@@ -23,12 +23,12 @@ function Form() {
     const initialDataState= {
         firstName:'',
         lastName:'',
-        birth:'dd/mm/yyyy',
-        start: new Date().toLocaleDateString(),
-        department:Departments[0],
+        startDate: new Date().toLocaleDateString(),
+        department:Departments[0].value,
+        dateOfBirth:'dd/mm/yyyy',
         street:'',
         city:'',
-        state:StatesData[0],
+        state:StatesData[0].value,
         zipCode:''
     }
 
@@ -36,8 +36,9 @@ function Form() {
     const employees = JSON.parse(localStorage.getItem('employees')) || [];
     employees.push(data);
 
-    const handleSubmit = async e => {
+    const handleSubmitForm = async e => {
         e.preventDefault();
+        handleSubmit(data)
         localStorage.setItem('employees', JSON.stringify(employees));
         setCreated(true)
         setData(initialDataState)  
@@ -52,7 +53,7 @@ function Form() {
     
     const handleElementsOpening = (elt) => { 
  
-        if(openedElts.start ||openedElts.birth || openedElts.department || openedElts.state) {
+        if(openedElts.startDate ||openedElts.dateOfBirth || openedElts.department || openedElts.state) {
             setOpenElts(initialState)  
         }  else {
             setOpenElts({
@@ -77,32 +78,32 @@ function Form() {
     return (
         <React.Fragment >
             
-            <form onSubmit={handleSubmit} id="create-employee">
+            <form onSubmit={handleSubmitForm} id="create-employee">
                 <label htmlFor="first-name">First Name</label>
-                <input required pattern="[a-z].{1,}" title="2 characters minimum" type="text" id="first-name" name='firstName'   value={data.firstName} onChange={handleInputChange}/>
+                <input required pattern="[A-za-z].{1,}" title="2 characters minimum" type="text" id="first-name" name='firstName'   value={data.firstName} onChange={handleInputChange}/>
 
                 <label htmlFor="last-name">Last Name</label>
-                <input required type="text" id="last-name" name='lastName' pattern="[a-z].{1,}" title="2 characters minimum" value={data.lastName} onChange={handleInputChange} />
+                <input required type="text" id="last-name" name='lastName' pattern="[A-Za-z].{1,}" title="2 characters minimum" value={data.lastName} onChange={handleInputChange} />
 
                 <Picker 
                 text="Date of Birth"
-                date={data.birth} 
+                date={data.dateOfBirth} 
                 handleInputChange={handleInputChange}
                 handleCustomInputChange={handleCustomInputChange}
                 label="date-of-birth"
-                name='birth'
-                isOpen={openedElts.birth}
+                name='dateOfBirth'
+                isOpen={openedElts.dateOfBirth}
                 handleOpen={handleElementsOpening}
                 />
 
                 <Picker 
                 text="Start Date"
-                date={data.start} 
+                date={data.startDate} 
                 handleInputChange={handleInputChange}
                 handleCustomInputChange={handleCustomInputChange}
                 label="start-date"
-                name='start'
-                isOpen={openedElts.start}
+                name='startDate'
+                isOpen={openedElts.startDate}
                 handleOpen={handleElementsOpening}
                 />
 
@@ -110,13 +111,13 @@ function Form() {
                     <legend>Address</legend>
 
                     <label htmlFor="street">Street</label>
-                    <input required  id="street" type="text" name='street' pattern="[a-z].{1,}" title="2 characters minimum" value={data.street} onChange={handleInputChange}/>
+                    <input required  id="street" type="text" name='street'  title="This field is required" value={data.street} onChange={handleInputChange}/>
 
                     <label htmlFor="city">City</label>
-                    <input required   id="city" type="text"  name='city' pattern="[a-z].{1,}" title="2 characters minimum" value={data.city} onChange={handleInputChange}/>
+                    <input required   id="city" type="text"  name='city' pattern="[A-za-z].{1,}" title="2 characters minimum" value={data.city} onChange={handleInputChange}/>
                     
                     <Dropdown
-                    selectValue={data.state}
+                    selectValue={StatesData[0]}
                     handleSelectChange={handleCustomInputChange}
                     selectLabel="State"
                     selectList={StatesData}
@@ -129,7 +130,7 @@ function Form() {
                 </fieldset>
                 
                     <Dropdown
-                    selectValue={data.department}
+                    selectValue={Departments[0]}
                     handleSelectChange={handleCustomInputChange}
                     selectLabel="Department"
                     selectList={Departments}

@@ -2,10 +2,13 @@ import React, { useState,useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
+import icon from '../images/calendar-regular.svg'
+
+
+
 function Picker({text,date,handleInputChange,handleCustomInputChange,label,name,isOpen,handleOpen}){
     const [value, setValue] = useState(new Date());
     const [mouseY,setMouseY]=useState('0')
-
     useEffect(() => {
         handleCustomInputChange(name,value.toLocaleDateString())
     }, [value])
@@ -18,7 +21,7 @@ function Picker({text,date,handleInputChange,handleCustomInputChange,label,name,
     return(
         <div className="calendar-wrapper" >
             <label  htmlFor={label}>{text}
-                <i className="far fa-calendar icon-calendar" onClick={(e)=>(handleClick(e))}></i>
+                <img  alt={'calendar icon'}src={icon} className="icon-calendar" onClick={(e)=>(handleClick(e))}></img>
             </label>
             <input required id={label} type="text" pattern="[0-9]{2}/[0-9]{2}/[0-9]{4}" title="The date must be dd/mm/yyyy" name={name} value={date} onChange={handleInputChange}
                />  

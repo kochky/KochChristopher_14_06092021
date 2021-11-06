@@ -38,3 +38,8 @@ table {
   text-align: unset !important;
 
 }
+
+.sort-icon {
+  right:20px !important;
+}
+

@@ -7,14 +7,14 @@ import Form from '../componants/Form';
 
 
 
-function CreateEmployeePage (){
+function CreateEmployeePage ({handleSubmit}){
 
     return (
         <div>
             <Header />
             <div className="container">
                 <h2>Create Employee</h2>
-                <Form />
+                <Form handleSubmit={handleSubmit} />
             </div>
          </div>
       );

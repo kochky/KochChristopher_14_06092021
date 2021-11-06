@@ -1,5 +1,6 @@
 
 import './css/App.css';
+import { useState } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -11,14 +12,21 @@ import EmployeeList from './pages/EmployeeList';
   
 
 function App() {
+
+  const [employees,setEmployees]=useState([])
+
+  const createEmployee = (newEmployee) => {
+    setEmployees([...employees, newEmployee]);
+  };
+
   return (
     <Router>
     <Switch>
        <Route exact path='/'>
-         <CreateEmployeePage />
+         <CreateEmployeePage handleSubmit={createEmployee} />
        </Route>
-       <Route path='/employee-list'>
-         <EmployeeList />
+       <Route  path='/employee-list'>
+         <EmployeeList setEmployees={setEmployees}employees={employees} />
        </Route>
     </Switch>
 
