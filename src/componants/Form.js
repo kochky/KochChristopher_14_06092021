@@ -33,13 +33,10 @@ function Form({handleSubmit}) {
     }
 
     const [data,setData]= useState(initialDataState)
-    const employees = JSON.parse(localStorage.getItem('employees')) || [];
-    employees.push(data);
 
     const handleSubmitForm = async e => {
         e.preventDefault();
         handleSubmit(data)
-        localStorage.setItem('employees', JSON.stringify(employees));
         setCreated(true)
         setData(initialDataState)  
     }

@@ -9,8 +9,6 @@ import {
 import CreateEmployeePage from './pages/CreateEmployee';
 import EmployeeList from './pages/EmployeeList';
 
-  
-
 function App() {
 
   const [employees,setEmployees]=useState([])
@@ -29,13 +27,8 @@ function App() {
          <EmployeeList setEmployees={setEmployees}employees={employees} />
        </Route>
     </Switch>
-
-
     </Router>
-  
-
   )
- 
 }
 
 export default App;
