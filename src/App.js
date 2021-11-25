@@ -13,6 +13,7 @@ function App() {
 
   const [employees,setEmployees]=useState([])
 
+  //Will add the employee to an array, to avoid erase the  previous ones
   const createEmployee = (newEmployee) => {
     setEmployees([...employees, newEmployee]);
   };

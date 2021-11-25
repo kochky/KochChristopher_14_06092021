@@ -6,7 +6,10 @@ import labelNames from '../data/labelNames'
 import '../css/DataTable.css';
 
 
-
+/** Second page with all the employees in the data table
+ * @param {function} setEmployees- used to fake datas
+ * @param {object} employees - employees created are used in a table
+ */
 function EmployeeList({employees,setEmployees}) {
     
     //this is used for the demonstration of how works the DataTable

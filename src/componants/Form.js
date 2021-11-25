@@ -5,12 +5,15 @@ import Dropdown from './Dropdown';
 import {Departments} from '../data/Departement';
 import Picker from './Picker';
 
-
 import '../css/Form.css';
 
 
+/** Modal showed when the employee is created
+ * @param {function} handleSubmit- put the new employee in the state
+ */
 function Form({handleSubmit}) {
   
+    //check if a element is open to avoir 2 opened elements like dropdown or calendar
     const initialState = {
         dateOfBirth: false,
         startDate: false,
@@ -18,8 +21,11 @@ function Form({handleSubmit}) {
         department: false,
       };
     const [openedElts, setOpenElts] = useState(initialState);
-    
+
+    //state used to display the modal when the employee is "created"
     const [created, setCreated]= useState(false)
+    
+    //the data required for a new employee
     const initialDataState= {
         firstName:'',
         lastName:'',
@@ -31,9 +37,9 @@ function Form({handleSubmit}) {
         state:StatesData[0].value,
         zipCode:''
     }
-
     const [data,setData]= useState(initialDataState)
 
+    //validate the form, put the employee in the state, open the modal and reset the inputs
     const handleSubmitForm = async e => {
         e.preventDefault();
         handleSubmit(data)
@@ -41,6 +47,7 @@ function Form({handleSubmit}) {
         setData(initialDataState)  
     }
 
+    //change the data and the input displayed
     const handleInputChange = (e) => {
         setData({
             ...data,
@@ -48,19 +55,7 @@ function Form({handleSubmit}) {
             })
       };
     
-    const handleElementsOpening = (elt) => { 
- 
-        if(openedElts.startDate ||openedElts.dateOfBirth || openedElts.department || openedElts.state) {
-            setOpenElts(initialState)  
-        }  else {
-            setOpenElts({
-                ...openedElts,
-                [elt]: !openedElts[elt],
-            
-            }); 
-        }
-    };
-    
+    //change the data and the input displayed for the calendar and dropdown, because the list of value is not the targeted element 
     const handleCustomInputChange = (name, value) => {
         setData({
             ...data,
@@ -68,6 +63,19 @@ function Form({handleSubmit}) {
         });
     };
 
+    //if one element is open, it close all of them. If none are open, the clicked element opens
+    const handleElementsOpening = (elt) => { 
+        if(openedElts.startDate ||openedElts.dateOfBirth || openedElts.department || openedElts.state) {
+            setOpenElts(initialState)  
+        }  else {
+            setOpenElts({
+                ...openedElts,
+                [elt]: !openedElts[elt],
+            }); 
+        }
+    };
+    
+   //if one input is changed, the dropdowns/calendar close
     useEffect(() => {
         setOpenElts(initialState) 
     }, [data])

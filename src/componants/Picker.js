@@ -5,14 +5,25 @@ import 'react-calendar/dist/Calendar.css';
 import icon from '../images/calendar-regular.svg'
 
 
-
+/** Modal showed when the employee is created
+ * @param {string} text -input type and label content
+ * @param {object} date -date in the state employee, used to be shown in the input as an example
+ * @param {function} handleInputChange -change the employee state with the input onChange if typed in the input
+ * @param {function} handleCustomInputChange -change the employee state with the input onChange if picked in the calendar
+ * @param {string} label- label of the input
+ * @param {boolean} isOpen- used as a condition to show the dropdown
+ * @param {function} handleOpen- close the other opened dropdown or calendars 
+ */
 function Picker({text,date,handleInputChange,handleCustomInputChange,label,name,isOpen,handleOpen}){
     const [value, setValue] = useState(new Date());
     const [mouseY,setMouseY]=useState('0')
+
+    //Change the employee state when a date is picked in react calendar
     useEffect(() => {
         handleCustomInputChange(name,value.toLocaleDateString())
     }, [value])
 
+    //open the element if clicked, and it appears depends the clicked element position
     function handleClick(e){
         handleOpen(name)
         setMouseY(e.target.offsetTop+21)

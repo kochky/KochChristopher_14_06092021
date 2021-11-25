@@ -1,5 +1,9 @@
 import '../css/ConfirmationMessage.css';
 
+
+/** Modal showed when the employee is created
+ * @param {function} setCreated- used as a switch to open or close the modal
+ */
 function ConfirmationMessage({setCreated}) {
 
     return (

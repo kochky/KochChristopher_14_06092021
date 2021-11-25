@@ -6,7 +6,9 @@ import Form from '../componants/Form';
 
 
 
-
+/** Homepage
+ * @param {function} handleSubmit- put the new employee in the state
+ */
 function CreateEmployeePage ({handleSubmit}){
 
     return (
