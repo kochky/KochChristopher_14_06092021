@@ -11,9 +11,7 @@ const Dropdown = ({
   isOpen,
   handleOpen,
 }) => {
-  const [activeDescendant, setActiveDescendant] = useState(
-    `option-${selectValue.text}`
-  );
+
   const [eltText,setEltText]=useState(selectValue.text)
   return (
     <div className="dropdown-wrapper">
@@ -37,7 +35,6 @@ const Dropdown = ({
               onClick={() => {
                 setEltText(elt.text)
                 handleSelectChange(selectName, elt.value);
-                setActiveDescendant(`option-${elt.text}`);
                 handleOpen(selectName);
               }}
               id={`option-${elt.text}`}

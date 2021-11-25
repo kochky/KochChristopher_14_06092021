@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Header from '../componants/Header';
 import DataTables from 'hrnet-datatables'
-import dataUser from '../dataUser';
-import propsExample from '../propsExample'
+import dataUser from '../data/dataUser';
+import labelNames from '../data/labelNames'
 import '../css/DataTable.css';
 
 
@@ -20,7 +20,7 @@ function EmployeeList({employees,setEmployees}) {
         <React.Fragment>
             <Header />
             <div className="employee-list-container">
-                <DataTables key={value}label={propsExample} data={employees} />
+                <DataTables key={value}label={labelNames} data={employees} />
                 <button onClick={handleClick} className="fake-button">Fake Data for demonstration</button>
             </div>  
         </React.Fragment>  

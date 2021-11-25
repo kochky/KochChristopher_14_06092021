@@ -43,9 +43,9 @@ function Form({handleSubmit}) {
 
     const handleInputChange = (e) => {
         setData({
-          ...data,
-          [e.target.name]: e.target.value,
-        });
+            ...data,
+            [e.target.name]: e.target.value,
+            })
       };
     
     const handleElementsOpening = (elt) => { 

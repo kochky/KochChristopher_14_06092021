@@ -1,4 +1,6 @@
-const thNames=[{firstName:'First Name',
+const labelNames=[
+    {
+    firstName:'First Name',
     lastName:'Last Name',
     startDate:'Start Date',
     department:'Department',
@@ -6,6 +8,7 @@ const thNames=[{firstName:'First Name',
     street:'Street',
     city:'City',
     state:'State',
-    zipCode:'Zip Code'}]
+    zipCode:'Zip Code'
+}]
 
-export default thNames
+export default labelNames

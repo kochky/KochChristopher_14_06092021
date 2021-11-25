@@ -1,16 +1,14 @@
 .employee-list-container{
     padding:0 100px;
- 
   }
 
-  .dataTable-thead , .dataTable-footer {
-    background-color: #00353F;
-  }
+.dataTable-thead , .dataTable-footer {
+  background-color: #00353F;
+}
 
 .dataTable-th, .dataTable-td{
     width:150px;
     max-width:150px;
-   
 }
 
 table {
@@ -43,3 +41,6 @@ table {
   right:20px !important;
 }
 
+.datatable-select{
+  border-radius:5px 5px 0 0 !important;
+}
