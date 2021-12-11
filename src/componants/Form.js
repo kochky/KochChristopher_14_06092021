@@ -134,15 +134,15 @@ function Form({handleSubmit}) {
                     <input required id="zip-code" type="text" name='zipCode'pattern="[0-9].{1,}" title="Must be a number" value={data.zipCode} onChange={handleInputChange} />
                 </fieldset>
                 
-                    <Dropdown
-                    selectValue={Departments[0]}
-                    handleSelectChange={handleCustomInputChange}
-                    selectLabel="Department"
-                    selectList={Departments}
-                    selectName="department"
-                    isOpen={openedElts.department}
-                    handleOpen={handleElementsOpening}
-                     />
+                <Dropdown
+                selectValue={Departments[0]}
+                handleSelectChange={handleCustomInputChange}
+                selectLabel="Department"
+                selectList={Departments}
+                selectName="department"
+                isOpen={openedElts.department}
+                handleOpen={handleElementsOpening}
+                    />
                 <button className="save-button">Save</button>
             </form>
             {created=== true ? <ConfirmationMessage setCreated={setCreated}/>:''}
